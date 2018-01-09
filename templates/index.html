@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chijioke's NeigborHood</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">            
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/offcanvas.css')}}"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+            <button type="button" class="navbar-toggler" data-toggle="offcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h2 class="navbar-brand" href="#">Chijioke's NeigborHood</h2>
+            <div class="form-inline input-group col-12 col-md-6 my-2 mx-auto">
+                    <input type="text" class="form-control" placeholder="Filter Locations" data-bind="textInput: filterText">
+                    <span class="input-group-addon">Filter</span>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row p-2 row-offcanvas row-offcanvas-left">
+                <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+                    
+                    <ul class="list-group places" data-bind="foreach: filteredLocations">
+                        <li class="list-group-item list-item-hover" data-bind="text: location.title(), click: showInfo"></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-9" id="map">
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+        <script src="{{ url_for('static', filename='js/google.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/offcanvas.js')}}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSNU3vrVex_JWh-MJtqtdelMij7p0VFkM&callback=initMap" onerror="errorLoadingMap()" async defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>        
+    </body>
+</html>
